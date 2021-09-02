@@ -36,7 +36,7 @@ def preprocess(datafile, calfile, chunk_size=2, phase_zenith=False, clobber=Fals
         uvd_chunk = uvd.select(times=tchunk, inplace=False)
         uvd_chunk.write_uvh5(f'zen.{tchunk[0]:.5f}.uvh5', clobber=clobber)
 
-def download_gdrive(folder, gpstime):
+def download_gdrive(data_folder, cal_folder, gpstime):
     """
     Download data from google drive folder with specified GPS time.
     """
@@ -44,12 +44,10 @@ def download_gdrive(folder, gpstime):
     gauth.LocalWebserverAuth()
     drive = GoogleDrive(gauth)
 
-    #if args.mode == 'both':
-    file_list = drive.ListFile({'q': f"'{folder}' in parents and trashed=False and title contains '{gpstime}'"}).GetList()
-    #elif args.mode == 'cal':
-    #file_list = drive.ListFile({'q': f"'{args.folder}' in parents and trashed=False and title contains '{args.gpstime}_cal.npz'"}).GetList()
-    #elif args.mode == 'data':
-    #    file_list = drive.ListFile({'q': f"'{args.folder}' in parents and trashed=False and title contains '{args.gpstime}.uvfits'"}).GetList()
+    file_list = drive.ListFile({'q': f"'{data_folder}' in parents and trashed=False and title contains '{gpstime}.uvfits'"}).GetList()
+    for file in file_list:
+        file.GetContentFile(file['title'])
 
+    file_list = drive.ListFile({'q': f"'{cal_folder}' in parents and trashed=False and title contains '{gpstime}_cal.npz'"}).GetList()
     for file in file_list:
         file.GetContentFile(file['title'])
