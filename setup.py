@@ -55,8 +55,8 @@ setup(
                       'numpy',
                       'pydrive'
                       ],
-    include_package_data=True,
+    #include_package_data=True,
     scripts=['scripts/mwa_preprocess.py', 'scripts/mwa_download_gdrive.py'],
-    package_data={'mwa_preprocess': data_files},
--    zip_safe = False,
+    #package_data={'mwa_preprocess': data_files},
+    zip_safe = False,
     )
