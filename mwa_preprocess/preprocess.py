@@ -14,7 +14,7 @@ def preprocess(datafile, calfile, chunk_size=2, phase_zenith=False, clobber=Fals
     """
     uvd = UVData()
     uvd.read_uvfits(datafile)
-
+    uvd.select(polarizations=['xx', 'yy'], inplace=True)
     npzcal = np.load(calfile)
 
     # apply calibration
@@ -32,9 +32,12 @@ def preprocess(datafile, calfile, chunk_size=2, phase_zenith=False, clobber=Fals
     nchunks = int(np.ceil(uvd.Ntimes / chunk_size))
     tchunks = [tarray[i * chunk_size: (i + 1) * chunk_size] for i in range(nchunks)]
     # write out calibrated chunks in jd format.
+    jd_int = int(uvd.time_array.min())
+    if not os.path.exists(f'{jd_int}'):
+        os.path.mkdir(f'{jd_int}')
     for tchunk in tchunks:
         uvd_chunk = uvd.select(times=tchunk, inplace=False)
-        uvd_chunk.write_uvh5(f'zen.{tchunk[0]:.5f}.uvh5', clobber=clobber)
+        uvd_chunk.write_uvh5(f'{jd_int}'/zen.{tchunk[0]:.5f}.uvh5', clobber=clobber)
 
 def download_gdrive(data_folder, cal_folder, gpstime):
     """
