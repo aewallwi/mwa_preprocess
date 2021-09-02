@@ -37,7 +37,7 @@ def preprocess(datafile, calfile, chunk_size=2, phase_zenith=False, clobber=Fals
         os.path.mkdir(f'{jd_int}')
     for tchunk in tchunks:
         uvd_chunk = uvd.select(times=tchunk, inplace=False)
-        uvd_chunk.write_uvh5(f'{jd_int}'/zen.{tchunk[0]:.5f}.uvh5', clobber=clobber)
+        uvd_chunk.write_uvh5(f'{jd_int}/zen.{tchunk[0]:.5f}.uvh5', clobber=clobber)
 
 def download_gdrive(data_folder, cal_folder, gpstime):
     """
