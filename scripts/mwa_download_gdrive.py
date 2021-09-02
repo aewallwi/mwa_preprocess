@@ -1,8 +1,7 @@
 # script that downloads observations from a google drive associated with a user specified jd.
 
 import argparse
-from pydrive.auth import GoogleAuth
-from pydrive.drive import GoogleDrive
+from mwa_preprocess import preprocess
 
 
 ap = argparse.ArgumentParser(description='google drive data downloader')
@@ -12,16 +11,4 @@ ap.add_argument('--gpstime', type=float, required=True, help="gpstime of observa
 
 args = ap.parse_args()
 
-gauth = GoogleAuth()
-gauth.LocalWebserverAuth()
-drive = GoogleDrive(gauth)
-
-#if args.mode == 'both':
-file_list = drive.ListFile({'q': f"'{args.folder}' in parents and trashed=False and title contains '{args.gpstime}'"}).GetList()
-#elif args.mode == 'cal':
-#file_list = drive.ListFile({'q': f"'{args.folder}' in parents and trashed=False and title contains '{args.gpstime}_cal.npz'"}).GetList()
-#elif args.mode == 'data':
-#    file_list = drive.ListFile({'q': f"'{args.folder}' in parents and trashed=False and title contains '{args.gpstime}.uvfits'"}).GetList()
-
-for file in file_list:
-    file.GetContentFile(file['title'])
+preprocess.download_gdrive(args.folder, args.gpstime)
