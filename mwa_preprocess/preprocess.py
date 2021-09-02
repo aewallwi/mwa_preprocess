@@ -45,7 +45,7 @@ def download_gdrive(folder, gpstime):
     drive = GoogleDrive(gauth)
 
     #if args.mode == 'both':
-    file_list = drive.ListFile({'q': f"'{args.folder}' in parents and trashed=False and title contains '{args.gpstime}'"}).GetList()
+    file_list = drive.ListFile({'q': f"'{folder}' in parents and trashed=False and title contains '{gpstime}'"}).GetList()
     #elif args.mode == 'cal':
     #file_list = drive.ListFile({'q': f"'{args.folder}' in parents and trashed=False and title contains '{args.gpstime}_cal.npz'"}).GetList()
     #elif args.mode == 'data':
