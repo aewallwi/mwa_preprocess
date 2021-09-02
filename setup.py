@@ -47,8 +47,8 @@ setup(
         'Programming Language :: Python :: 3 :: Only',
     ],
     keywords='21cm, cosmology, foregrounds, radio astronomy, cosmic dawn',
-    package_dir={'calamity': 'calamity'},
-    packages=['calamity'],
+    package_dir={'mwa_preprocess': 'mwa_preprocess'},
+    packages=['mwa_preprocess'],
     python_requires='>=3.6, <4',
     install_requires=[
                       'pyuvdata',
@@ -56,7 +56,7 @@ setup(
                       'pydrive'
                       ],
     include_package_data=True,
-    scripts=['scripts/apply_npz.py', 'convert_uvh5.py', 'download_obs.py']
+    scripts=['scripts/mwa_preprocess.py', 'scripts/mwa_download_gdrive.py'],
     package_data={'mwa_preprocess': data_files},
 -    zip_safe = False,
     )
