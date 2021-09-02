@@ -15,7 +15,7 @@ def preprocess(datafile, calfile, chunk_size=2, phase_zenith=False, clobber=Fals
     uvd = UVData()
     uvd.read_uvfits(datafile)
 
-    npzcal = np.loadz(calfile)
+    npzcal = np.load(calfile)
 
     # apply calibration
     for blt, vis in enumerate(uvd.data_array):
