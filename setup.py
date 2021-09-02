@@ -25,7 +25,7 @@ def package_files(package_dir, subdirectory):
 
 here = pathlib.Path(__file__).parent.resolve()
 long_description = (here / 'README.md').read_text(encoding='utf-8')
-data_files = package_files('mwa_preprocess')
+#data_files = package_files('mwa_preprocess')
 
 setup(
     name='mwa_preprocess',  # Required
