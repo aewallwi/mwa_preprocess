@@ -11,6 +11,7 @@ import os
 import sys
 
 sys.path.append("mwa_preprocess")
+import version
 
 def package_files(package_dir, subdirectory):
     # walk the input package_dir/subdirectory
@@ -29,7 +30,7 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name='mwa_preprocess',  # Required
-    version='0.0.1',  # Required
+    'version': version.version,
     description='Scripts to prepare MWA data for the HERA lstbinner.',  # Optional
     long_description=long_description,  # Optional
     long_description_content_type='text/markdown',  # Optional (see note above)
