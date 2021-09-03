@@ -30,7 +30,7 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name='mwa_preprocess',  # Required
-    'version': version.version,
+    version=version.version,
     description='Scripts to prepare MWA data for the HERA lstbinner.',  # Optional
     long_description=long_description,  # Optional
     long_description_content_type='text/markdown',  # Optional (see note above)
