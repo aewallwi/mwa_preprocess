@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # script that downloads observations from a google drive associated with a user specified jd.
 
 import argparse
