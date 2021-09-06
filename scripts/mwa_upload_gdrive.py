@@ -15,5 +15,5 @@ ap.add_argument("--retry_time", type=float, default=60., help="time interval to 
 
 args = ap.parse_args()
 
-preprocess.upload_gdrive(data_folder=args.data_folder, args.data_files,
+preprocess.upload_gdrive(data_folder=args.data_folder, data_files=args.data_files,
                          sleep_time=args.sleep_time, retry_time=args.retry_time)
