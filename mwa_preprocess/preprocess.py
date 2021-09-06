@@ -7,6 +7,7 @@ from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 import tqdm
 from mwa_preprocess import preprocess
+import time
 
 def preprocess(datafile, calfile, chunk_size=2, phase_zenith=False, clobber=False):
     """
