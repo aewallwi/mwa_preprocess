@@ -57,7 +57,7 @@ setup(
                       'pydrive'
                       ],
     #include_package_data=True,
-    scripts=['scripts/mwa_cal_and_split.py', 'scripts/mwa_download_gdrive.py'],
+    scripts=['scripts/mwa_cal_and_split.py', 'scripts/mwa_download_gdrive.py', 'scripts/mwa_upload_gdrive.py'],
     #package_data={'mwa_preprocess': data_files},
     zip_safe = False,
     )
