@@ -54,7 +54,8 @@ setup(
     install_requires=[
                       'pyuvdata',
                       'numpy',
-                      'pydrive'
+                      'pydrive',
+                      'tqdm',
                       ],
     #include_package_data=True,
     scripts=['scripts/mwa_cal_and_split.py', 'scripts/mwa_download_gdrive.py', 'scripts/mwa_upload_gdrive.py'],
