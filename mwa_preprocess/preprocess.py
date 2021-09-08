@@ -89,5 +89,7 @@ def upload_gdrive(data_folder, data_files, sleep_time=0.0, retry_time=60., clobb
                     status=True
                     time.sleep(sleep_time)
                 except:
+                    err = sys.exc_info()[0]
+                    print(err)
                     status=False
                     time.sleep(sleep_time)
