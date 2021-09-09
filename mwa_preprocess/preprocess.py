@@ -8,6 +8,7 @@ from pydrive.drive import GoogleDrive
 import tqdm
 from mwa_preprocess import preprocess
 import time
+import sys
 
 def preprocess(datafile, calfile, chunk_size=2, phase_zenith=False, clobber=False):
     """
@@ -60,7 +61,7 @@ def download_gdrive(data_folder, cal_folder, gpstime):
 
 
 
-def upload_gdrive(data_folder, data_files, sleep_time=0.0, retry_time=60., clobber=False):
+def upload_gdrive(data_folder, data_files, sleep_time=0.0, retry_time=60., clobber=False, retry=False):
     """
     Upload data_files to data_folder.
     """
@@ -91,5 +92,6 @@ def upload_gdrive(data_folder, data_files, sleep_time=0.0, retry_time=60., clobb
                 except:
                     err = sys.exc_info()[0]
                     print(err)
-                    status=False
-                    time.sleep(sleep_time)
+                    status = not retry
+                    if retry:
+                        time.sleep(sleep_time)

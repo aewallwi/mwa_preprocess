@@ -52,6 +52,7 @@ setup(
     packages=['mwa_preprocess'],
     python_requires='>=3.6, <4',
     install_requires=[
+                      'httplib2<=0.15.0',
                       'pyuvdata',
                       'numpy',
                       'pydrive',
